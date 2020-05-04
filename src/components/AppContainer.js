@@ -1,11 +1,31 @@
 import React, { Component } from 'react'
+import styled from 'styled-components';
 
-export class AppContainer extends Component {
+import { Menu } from './Menu'
+import { CardContainer } from './CardContainer'
+import { Header } from './Header'
+
+const Container = styled.div`
+  display:flex;
+  flex-direction:column;
+  width:100vw;
+`
+
+export class AppContainer extends React.Component {
+
+  state = {
+
+  }
+
   render() {
     return (
+      <Container>
+        <Header></Header>
       <div>
-
+        <Menu></Menu>
+        <CardContainer />        
       </div>
+      </Container>
     )
   }
 }
