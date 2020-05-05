@@ -1,4 +1,85 @@
 import React from 'react'
+import styled from 'styled-components'
+import logo from '../components/imagens/futurecar.png'
+
+
+const Body = styled.div`
+  
+  background: #f2ce46;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  algn-items: center;
+`
+
+const Form = styled.div`
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 35vw;
+  height: 80vh;
+  background: white;
+  border-radius: 20px;
+  margin: auto;
+`
+
+const Informacao = styled.div`
+  color: red;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+`
+
+const Texto = styled.div`
+  width:100%;
+  color: red;
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  font-size: 1.3rem;
+  justify-content: center;
+`
+const InputDiv = styled.div`
+font-family: 'Montserrat', sans-serif;
+font-weight: 700;
+display: grid;
+
+`
+
+const Input = styled.input`
+  border: none;
+  background: rgb(248,250,248);
+  width: 100%;
+  height: 42px;
+`
+
+const Button = styled.button`
+  width: 260px;
+  height: 60px;
+  background: red;
+  border: none;
+  font-size: 1.3rem;
+  margin: auto;
+`
+
+const Footer = styled.div`
+  width: 100%;
+  height: 20vh;
+  background: white;
+  position: relative;
+  top: 100px;
+`
+
+const Imagem = styled.img`
+  height: 100%;
+`
+
+
 
 export class Cadastro extends React.Component {
   state = {
@@ -23,33 +104,61 @@ export class Cadastro extends React.Component {
 
   render () {
     return (
-        <div>
-          <input
+        <Body>
+
+          <Texto>
+          <h1>ÓTIMA ESCOLHA EM VENDER SEU <br></br>CARRO CONOSCO</h1>
+          </Texto>
+
+        <Form>
+          <Informacao>
+            <h2>PREENCHA SEUS DADOS</h2>  
+          </Informacao>
+
+          <InputDiv>
+          <label>*NOME </label>
+          <Input
           type="text"
-          placeholder=" Informe Seu Nome Completo"
+          placeholder="Nome"
           onChange={this.onChangeNome}                   
           />
-        <input
+          </InputDiv>
+
+      <InputDiv>
+        <label>*EMAIL</label>
+        <Input
           type="text"
-          placeholder="Informe seu E-mail"
+          placeholder="E-mail"
           onChange={this.onChangeEmail}     
         />
-        <input
+      </InputDiv>
+
+      <InputDiv>
+      <label>*TELEFONE</label>
+        <Input
           type="text"
-          placeholder="Informe o número do Telefone/Celular"
+          placeholder="Telefone"
           onChange={this.onChangeTelefone}     
         />
-        <input
+        </InputDiv>
+
+        <InputDiv>
+        <label>*TELEFONE</label>
+        <Input
           type="text"
-          placeholder="Informe sua Senha"
+          placeholder="Telefone"
           onChange={this.onChangeSenha}     
         />
-        <button>Cadastrar</button>
-        </div>
+        </InputDiv>
+
+        <Button>Enviar</Button>
+        </Form>
+
+        <Footer>
+          <Imagem src={logo}></Imagem>
+        </Footer>
+        </Body>
 
     )
   }
-
-
-
 }
