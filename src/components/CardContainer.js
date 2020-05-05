@@ -9,7 +9,7 @@ const DivContainer = styled.div`
 const Container = styled.div`
     display:flex;
     flex-direction: column;
-    border: 2px rgb(101, 98, 97) solid;
+    border: none;
     width:20%;
     margin: 2vw;
     height: auto;
@@ -23,6 +23,8 @@ const ContainerDetalhes = styled.div`
     align-items: center;
     background-color: white;
     padding-bottom:1vw;
+    border-right: 1px rgb(101, 98, 97) solid;
+    border-left: 1px rgb(101, 98, 97) solid;
 `
 
 const Titulo = styled.h3`
@@ -71,6 +73,7 @@ const BotaoQuero = styled.button`
 `
 
 export class CardContainer extends React.Component {
+    //state para teste do card, apagar depois
     state = {
         carros: [{
             nome: "Fusquinha",

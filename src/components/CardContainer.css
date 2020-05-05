@@ -2,3 +2,7 @@
     border:2px rgb(226, 42, 36) solid;
     background-color: rgb(226, 42, 36);
 }
+
+*{
+    font-family: 'Montserrat';
+}
