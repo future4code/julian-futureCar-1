@@ -1,71 +1,108 @@
 import React from 'react'
 import styled from 'styled-components'
-
-const Container = styled.div`
-    border: 1px black solid;
-    width:30%;
-    padding: 0.5vw;
-    margin: 0.5vw;
-    margin-top: 3vw;
-`
+import './CardContainer.css'
 
 const DivContainer = styled.div`
     display:flex;
 `
 
-const Titulo = styled.h3`
+const Container = styled.div`
+    display:flex;
+    flex-direction: column;
+    border: none;
+    width:20%;
+    margin: 2vw;
+    height: auto;
+    background-color: rgb(49, 50, 50);
+`
 
+const ContainerDetalhes = styled.div`
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding-bottom:1vw;
+    border-right: 1px rgb(101, 98, 97) solid;
+    border-left: 1px rgb(101, 98, 97) solid;
+`
+
+const Titulo = styled.h3`
+    margin:0;
+    color: rgb(226, 42, 36);
+    font-size: 1.5em;
 `
 
 const Foto = styled.img`
-    width: 90%;
+    width: 100%;
+    margin:0;
+    background-color: white;
 `
 
 const Descricao = styled.p`
-
+    margin:0;
+    text-align: center;
 `
 
 const Valor = styled.h3`
+    margin:0;
+    color: rgb(226, 42, 36);
+    font-size: 1.5em;
+`
+
+const FormaDePagamento = styled.p`
+    margin:0;
 
 `
 
 
+const PrazoEntrega = styled.p`
+    color: rgb(226, 42, 36);
+    margin:0;
+
+`
+
+const BotaoQuero = styled.button`
+    border:none;
+    width: 100%;
+    color:white;
+    height: 5vw;
+    font-size: 1.2em;
+    margin:0;
+    background-color: transparent;
+`
+
 export class CardContainer extends React.Component {
+    //state para teste do card, apagar depois
     state = {
         carros: [{
-            marca: "HYUNDAI",
-            nome: "HB20",
-            imagem: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/HN8P2?wid=1144&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1562949177509",
+            nome: "Fusquinha",
+            imagem: "https://jmonline.com.br/uploads/noticia/141640_1.jpg",
             preco: "1500",
             descricao: "Carrinho muito veloz 0km topper zopper",
-        },
-        {
-            marca: "HYUNDAI",
-            nome: "HB20",
-            imagem: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/HN8P2?wid=1144&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1562949177509",
+            prazo: "60dias",
+            pagamento: "crédito"
+        }, {
+            nome: "Fusquinha",
+            imagem: "https://jmonline.com.br/uploads/noticia/141640_1.jpg",
             preco: "1500",
             descricao: "Carrinho muito veloz 0km topper zopper",
-        }, 
-        {
-            marca: "HYUNDAI",
-            nome: "HB20",
-            imagem: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/HN8P2?wid=1144&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1562949177509",
+            prazo: "60dias",
+            pagamento: "crédito"
+        }, {
+            nome: "Fusquinha",
+            imagem: "https://jmonline.com.br/uploads/noticia/141640_1.jpg",
             preco: "1500",
             descricao: "Carrinho muito veloz 0km topper zopper",
-        }, 
-        {
-            marca: "HYUNDAI",
-            nome: "HB20",
-            imagem: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/HN8P2?wid=1144&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1562949177509",
+            prazo: "60dias",
+            pagamento: "crédito"
+        }, {
+            nome: "Fusquinha",
+            imagem: "https://jmonline.com.br/uploads/noticia/141640_1.jpg",
             preco: "1500",
             descricao: "Carrinho muito veloz 0km topper zopper",
-        }, 
-        {
-            marca: "HYUNDAI",
-            nome: "HB20",
-            imagem: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/HN8P2?wid=1144&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1562949177509",
-            preco: "1500",
-            descricao: "Carrinho muito veloz 0km topper zopper",
+            prazo: "60dias",
+            pagamento: "crédito"
         }]
     }
 
@@ -73,11 +110,16 @@ export class CardContainer extends React.Component {
 
         const imprimeCarros = this.state.carros.map((carro) => {
             return (
-                <Container>
+                <Container className='hoverBorderVermelho'>
                     <Foto src={carro.imagem}></Foto>
-                    <Titulo>{carro.marca} {carro.nome}</Titulo>
+                    <ContainerDetalhes>
+                    <Titulo>{carro.nome}</Titulo>
                     <Descricao>{carro.descricao}</Descricao>
                     <Valor>R${carro.preco}</Valor>
+                    <FormaDePagamento>Forma de pagamento: {carro.pagamento}</FormaDePagamento>
+                    <PrazoEntrega>Prazo de entraga: {carro.prazo}</PrazoEntrega>
+                    </ContainerDetalhes>
+                    <BotaoQuero>QUERO ESTE CARRO</BotaoQuero>
                 </Container>
             )
         })
