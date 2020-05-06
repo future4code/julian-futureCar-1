@@ -1,45 +1,49 @@
 import React from 'react'
 import styled from 'styled-components'
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const MenuContainer = styled.div`
-    border: 1px black solid;
     display: flex;
-    flex-direction: column;
-    width: 30vw;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 3vw;
-    margin-left: 3vw;
-    padding:1vw;
-`
-const InputTexto = styled.input`
-    border: 1px black solid;
+    width: 95vw;
+    height:10vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    box-shadow: 10px 10px 10px grey;
 `
 
-const InputValor = styled.input`
-    border: 1px black solid;
+const ValorMinimo = styled(TextField)`
+    
+`
+
+const BotaoBuscar = styled(Button)`
+    background-color: rgb(226, 42, 36);
 `
 
 export class Menu extends React.Component {
     render() {
-      return (
-        <MenuContainer>
-            <InputTexto
-            placeholder="Digite marca ou modelo"
-            ></InputTexto>
-            <label>Valor Mínimo:</label>
-            <InputValor
-            type="number">
-            </InputValor>
-            <label>Valor Máximo:</label>
-            <InputValor
-            type="number">
-            </InputValor>
-            <label>Ordenar por:</label>
-            <select>
-                <option>Título</option>
-                <option>Valor de Venda</option>
-                <option>Prazo de Entrega</option>
-            </select>
-        </MenuContainer>
-      )
+        return (
+            <MenuContainer>
+                <TextField
+                    id="standard-basic"
+                    label="Qual carro você procura?"
+                />
+                <ValorMinimo
+
+                    id="standard-basic"
+                    label="Valor Mínimo"
+                    type="number"
+                />
+                <TextField
+                    id="standard-basic"
+                    label="Valor Máximo"
+                    type="number" />
+
+                <BotaoBuscar>Buscar</BotaoBuscar>
+            </MenuContainer>
+        )
     }
-  }
+}
