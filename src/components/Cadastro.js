@@ -2,7 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import logo from '../components/imagens/futurecar.png'
 import logocar from '../components/imagens/logo.png'
+import carimagem from '../components/imagens/foto-100.jpg'
 
+
+const Car = styled.img`
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  width: 100%;
+  opacity: 0.2;
+  position: fixed;
+`
 
 const Body = styled.div`
   
@@ -14,7 +24,8 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  algn-items: center;
+  align-items: center;
+  z-index: 2;
 `
 
 const Form = styled.div`
@@ -28,12 +39,14 @@ const Form = styled.div`
   background: white;
   border-radius: 20px;
   margin: auto;
+  z-index: 1;
 `
 
 const Informacao = styled.div`
   color: red;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
+  z-index: 1;
 `
 
 const Texto = styled.div`
@@ -46,6 +59,7 @@ const Texto = styled.div`
   display: flex;
   font-size: 1.5rem;
   justify-content: center;
+  z-index: 1;
 `
 
 const InputDiv = styled.div`
@@ -80,6 +94,7 @@ const Footer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 `
 
 const Imagem = styled.img`
@@ -90,7 +105,9 @@ const Img = styled.img`
   width: 40vw;
   height: 40vh;
   margin: auto;
+  z-index: 1;
 `
+
 
 
 
@@ -118,6 +135,9 @@ export class Cadastro extends React.Component {
   render () {
     return (
         <Body>
+
+          <Car src={carimagem}></Car>
+
           <Img src={logocar}></Img>
           <Texto>
           <h1>ÓTIMA ESCOLHA EM VENDER SEU <br></br>CARRO CONOSCO</h1>
