@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import logo from '../components/imagens/futurecar.png'
+import logocar from '../components/imagens/logo.png'
 
 
 const Body = styled.div`
@@ -36,14 +37,17 @@ const Informacao = styled.div`
 `
 
 const Texto = styled.div`
+  margin-top: 70px;
+  margin-bottom: 120px; 
   width:100%;
   color: red;
   font-family: sans-serif;
   text-align: center;
   display: flex;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   justify-content: center;
 `
+
 const InputDiv = styled.div`
 font-family: 'Montserrat', sans-serif;
 font-weight: 700;
@@ -73,10 +77,19 @@ const Footer = styled.div`
   background: white;
   position: relative;
   top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const Imagem = styled.img`
   height: 100%;
+`
+
+const Img = styled.img`
+  width: 40vw;
+  height: 40vh;
+  margin: auto;
 `
 
 
@@ -105,7 +118,7 @@ export class Cadastro extends React.Component {
   render () {
     return (
         <Body>
-
+          <Img src={logocar}></Img>
           <Texto>
           <h1>ÓTIMA ESCOLHA EM VENDER SEU <br></br>CARRO CONOSCO</h1>
           </Texto>
@@ -156,6 +169,7 @@ export class Cadastro extends React.Component {
 
         <Footer>
           <Imagem src={logo}></Imagem>
+          <p>©Todos os direitos reservados a Shirlei, Melissa, Leonardo e Wellington</p>
         </Footer>
         </Body>
 
