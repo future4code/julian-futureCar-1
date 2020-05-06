@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import './CardContainer.css'
+import axios from 'axios'
 
 const DivContainer = styled.div`
     display:flex;
@@ -75,49 +76,37 @@ const BotaoQuero = styled.button`
 export class CardContainer extends React.Component {
     //state para teste do card, apagar depois
     state = {
-        carros: [{
-            nome: "Fusquinha",
-            imagem: "https://jmonline.com.br/uploads/noticia/141640_1.jpg",
-            preco: "1500",
-            descricao: "Carrinho muito veloz 0km topper zopper",
-            prazo: "60dias",
-            pagamento: "crédito"
-        }, {
-            nome: "Fusquinha",
-            imagem: "https://jmonline.com.br/uploads/noticia/141640_1.jpg",
-            preco: "1500",
-            descricao: "Carrinho muito veloz 0km topper zopper",
-            prazo: "60dias",
-            pagamento: "crédito"
-        }, {
-            nome: "Fusquinha",
-            imagem: "https://jmonline.com.br/uploads/noticia/141640_1.jpg",
-            preco: "1500",
-            descricao: "Carrinho muito veloz 0km topper zopper",
-            prazo: "60dias",
-            pagamento: "crédito"
-        }, {
-            nome: "Fusquinha",
-            imagem: "https://jmonline.com.br/uploads/noticia/141640_1.jpg",
-            preco: "1500",
-            descricao: "Carrinho muito veloz 0km topper zopper",
-            prazo: "60dias",
-            pagamento: "crédito"
-        }]
+        carros: []
+        
     }
+
+    componentDidMount () {
+        this.carregaLista()
+    }
+
+carregaLista = () => {
+    axios
+        .get('https://us-central1-labenu-apis.cloudfunctions.net/futureCarOne/cars')
+        .then(result => {
+            this.setState({ carros: result.data.cars })
+            console.log(this.state.carros)
+        }).catch (error => {
+            console.log("erro:", error)
+        })
+}
 
     render() {
 
         const imprimeCarros = this.state.carros.map((carro) => {
             return (
                 <Container className='hoverBorderVermelho'>
-                    <Foto src={carro.imagem}></Foto>
+                    <Foto src={carro.paymentMethod}></Foto>
                     <ContainerDetalhes>
-                    <Titulo>{carro.nome}</Titulo>
-                    <Descricao>{carro.descricao}</Descricao>
-                    <Valor>R${carro.preco}</Valor>
-                    <FormaDePagamento>Forma de pagamento: {carro.pagamento}</FormaDePagamento>
-                    <PrazoEntrega>Prazo de entraga: {carro.prazo}</PrazoEntrega>
+                    <Titulo>{carro.name}</Titulo>
+                    <Descricao>{carro.description}</Descricao>
+                    <Valor>R${carro.price}</Valor>
+                    <FormaDePagamento>Forma de pagamento: Cartão</FormaDePagamento>
+                    <PrazoEntrega>Prazo de entraga: {carro.shipping} dias</PrazoEntrega>
                     </ContainerDetalhes>
                     <BotaoQuero>QUERO ESTE CARRO</BotaoQuero>
                 </Container>
