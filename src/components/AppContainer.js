@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
-
 import { Menu } from './Menu'
 import { CardContainer } from './CardContainer'
 import { Header } from './Header'
 import { Cadastro } from './Cadastro'
+import Footer from './Footer'
+
 
 const Container = styled.div`
   display:flex;
@@ -19,11 +20,20 @@ export class AppContainer extends React.Component {
 
   }
 
+
   render() {
     return (
-      <div>
-        <Cadastro></Cadastro>
+      <Container>
+        <Header />
+      <div>           
+
+        <Menu />
+        <CardContainer />        
+
       </div>
+      <Footer />
+      </Container>
+
     )
   }
 }
