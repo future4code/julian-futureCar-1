@@ -77,7 +77,7 @@ export class CardContainer extends React.Component {
     //state para teste do card, apagar depois
     state = {
         carros: []
-        
+
     }
 
     componentDidMount () {
@@ -98,15 +98,16 @@ carregaLista = () => {
     render() {
 
         const imprimeCarros = this.state.carros.map((carro) => {
+
             return (
                 <Container className='hoverBorderVermelho'>
                     <Foto src={carro.paymentMethod}></Foto>
                     <ContainerDetalhes>
                     <Titulo>{carro.name}</Titulo>
                     <Descricao>{carro.description}</Descricao>
-                    <Valor>R${carro.price}</Valor>
+                    <Valor>R$: {carro.price}</Valor>
                     <FormaDePagamento>Forma de pagamento: Cartão</FormaDePagamento>
-                    <PrazoEntrega>Prazo de entraga: {carro.shipping} dias</PrazoEntrega>
+                    <PrazoEntrega>Prazo de entrega: {carro.shipping} dias</PrazoEntrega>
                     </ContainerDetalhes>
                     <BotaoQuero>QUERO ESTE CARRO</BotaoQuero>
                 </Container>
