@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import { Menu } from './Menu'
 import { CardContainer } from './CardContainer'
 import { Header } from './Header'
+import { Cadastro } from './Cadastro'
 import Footer from './Footer'
+
 
 const Container = styled.div`
   display:flex;
   flex-direction:column;
   width:100vw;
 `
+
 
 export class AppContainer extends React.Component {
 
@@ -21,15 +24,16 @@ export class AppContainer extends React.Component {
   render() {
     return (
       <Container>
-        <Header></Header>
+        <Header />
       <div>           
 
-        <Menu></Menu>
+        <Menu />
         <CardContainer />        
 
       </div>
       <Footer />
       </Container>
+
     )
   }
 }
