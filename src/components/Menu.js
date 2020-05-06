@@ -14,14 +14,31 @@ const MenuContainer = styled.div`
     padding-right: 3vw;
     box-shadow: 10px 10px 10px grey;
 `
-
 const ValorMinimo = styled(TextField)`
-    
+    width: 10vw;
+`
+const SelectFiltro = styled(TextField)`
+    width: 10vw;
 `
 
 const BotaoBuscar = styled(Button)`
     background-color: rgb(226, 42, 36);
 `
+
+const currencies = [
+    {
+      value: 'titulo',
+      label: 'Título',
+    },
+    {
+      value: 'venda',
+      label: 'Valor da venda',
+    },
+    {
+      value: 'entrega',
+      label: 'Prazo de Entrega',
+    }
+  ];
 
 export class Menu extends React.Component {
     render() {
@@ -40,7 +57,18 @@ export class Menu extends React.Component {
                 <TextField
                     id="standard-basic"
                     label="Valor Máximo"
-                    type="number" />
+                    type="number"
+                />
+                <SelectFiltro
+                select
+                label="Ordenar por"
+                >
+                    {currencies.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                  </SelectFiltro>
 
                 <BotaoBuscar>Buscar</BotaoBuscar>
             </MenuContainer>
