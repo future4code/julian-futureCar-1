@@ -13,9 +13,12 @@ width : 100%;
 margin:auto;
 background-color: #fad140;
 padding-top:20px;
+position: fixed;
+bottom: 0;
 `
 const ContainerContatos = styled.div`
-border: 2px solid #000;
+border-top: 2px solid #000;
+border-bottom: 2px solid #000;
 height:35px;
 display:flex;
 `
