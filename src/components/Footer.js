@@ -17,7 +17,8 @@ position: fixed;
 bottom: 0;
 `
 const ContainerContatos = styled.div`
-border: 2px solid #000;
+border-top: 2px solid #000;
+border-bottom: 2px solid #000;
 height:35px;
 display:flex;
 `
