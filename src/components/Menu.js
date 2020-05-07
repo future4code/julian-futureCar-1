@@ -10,6 +10,7 @@ const MenuContainer = styled.div`
     margin-top: 3vw;
     width: 95vw;
     height:10vw;
+    margin:0;
     padding-left: 3vw;
     padding-right: 3vw;
     box-shadow: 10px 10px 10px grey;

@@ -1,17 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
 import './CardContainer.css'
+import Button from '@material-ui/core/Button';
 import axios from 'axios'
-
-const DivContainer = styled.div`
-    display:flex;
-`
 
 const Container = styled.div`
     display:flex;
+    max-width:100vw;
+    padding:0;
+    justify-content: space-between;
+    flex-direction:row;
+    flex-wrap: wrap;
+`
+
+const ContainerCard = styled.div`
+    display:flex;
     flex-direction: column;
-    border: none;
-    width:20%;
+    border: 1px rgb(101, 98, 97) solid;
+    width:20vw;
     margin: 2vw;
     height: auto;
     background-color: rgb(49, 50, 50);
@@ -24,8 +30,6 @@ const ContainerDetalhes = styled.div`
     align-items: center;
     background-color: white;
     padding-bottom:1vw;
-    border-right: 1px rgb(101, 98, 97) solid;
-    border-left: 1px rgb(101, 98, 97) solid;
 `
 
 const Titulo = styled.h3`
@@ -56,14 +60,13 @@ const FormaDePagamento = styled.p`
 
 `
 
-
 const PrazoEntrega = styled.p`
     color: rgb(226, 42, 36);
     margin:0;
 
 `
 
-const BotaoQuero = styled.button`
+const BotaoQuero = styled(Button)`
     border:none;
     width: 100%;
     color:white;
@@ -100,7 +103,7 @@ carregaLista = () => {
         const imprimeCarros = this.state.carros.map((carro) => {
 
             return (
-                <Container className='hoverBorderVermelho'>
+                <ContainerCard className='hoverBorderVermelho'>
                     <Foto src={carro.paymentMethod}></Foto>
                     <ContainerDetalhes>
                     <Titulo>{carro.name}</Titulo>
@@ -110,14 +113,14 @@ carregaLista = () => {
                     <PrazoEntrega>Prazo de entrega: {carro.shipping} dias</PrazoEntrega>
                     </ContainerDetalhes>
                     <BotaoQuero>QUERO ESTE CARRO</BotaoQuero>
-                </Container>
+                </ContainerCard>
             )
         })
 
         return (
-            <DivContainer>
+            <Container>
                 {imprimeCarros}
-            </DivContainer>
+            </Container>
         )
     }
 }
