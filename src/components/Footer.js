@@ -10,10 +10,10 @@ import YoutubeIcon from '@material-ui/icons/YouTube';
 
 const Container = styled.div`
 width : 100%;
-margin:auto;
+margin:0;
 background-color: #fad140;
 padding-top:20px;
-position: fixed;
+position: relative;
 bottom: 0;
 `
 const ContainerContatos = styled.div`
@@ -65,7 +65,7 @@ const Reservados = styled.div`
 export class Footer extends React.Component {
 
 
-  render () {
+  render() {
 
     return (
       <Container>
@@ -75,7 +75,7 @@ export class Footer extends React.Component {
             <WhatsAppIcon fontSize="small" /> WHATSAPP (21) 0101-01010
 
             </Whats>
-            <Telefone>
+          <Telefone>
             <CallIcon fontSize="small" /> 0800 000 0000
             </Telefone>
           <Direita>
@@ -83,10 +83,10 @@ export class Footer extends React.Component {
             <Paragrafo><FacebookIcon fontSize="small" /><InstagramIcon fontSize="small" /><TwitterIcon fontSize="small" /><YoutubeIcon fontSize="small" /></Paragrafo>
           </Direita>
         </ContainerContatos>
-<Reservados>
-  <Imagem src={Logo}  alt="Logo"/>
+        <Reservados>
+          <Imagem src={Logo} alt="Logo" />
           <Paragrafo>© Todos os Direitos reservados  Shirlei , Melissa, Leonardo e Wellington</Paragrafo>
-</Reservados>
+        </Reservados>
       </Container>
     )
   }
