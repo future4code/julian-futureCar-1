@@ -20,7 +20,7 @@ const ValorMinimo = styled(TextField)`
   width: 10vw;
 `;
 const SelectFiltro = styled(TextField)`
-  width: 10vw;
+  width: 20vw;
 `;
 
 const BotaoBuscar = styled(Button)`
