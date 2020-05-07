@@ -7,6 +7,7 @@ import { Cadastro } from './Cadastro'
 import Footer from './Footer'
 
 
+
 const Container = styled.div`
   display:flex;
   flex-direction:column;
@@ -25,8 +26,9 @@ export class AppContainer extends React.Component {
     return (
       <Container>
         <Header />
+       
       <div>           
-
+     
         <Menu />
         <CardContainer />        
 
