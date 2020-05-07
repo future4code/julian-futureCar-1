@@ -105,7 +105,7 @@ carregaLista = () => {
                     <ContainerDetalhes>
                     <Titulo>{carro.name}</Titulo>
                     <Descricao>{carro.description}</Descricao>
-                    <Valor>R$: {carro.price}</Valor>
+                    <Valor>R$ : {carro.price}</Valor>
                     <FormaDePagamento>Forma de pagamento: Cartão</FormaDePagamento>
                     <PrazoEntrega>Prazo de entrega: {carro.shipping} dias</PrazoEntrega>
                     </ContainerDetalhes>
