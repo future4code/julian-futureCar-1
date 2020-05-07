@@ -43,21 +43,31 @@ const currencies = [
 export class Menu extends React.Component {
     render() {
         return (
+
+          //Adicionado as props dos filtros de nome, valor maximo e valor minimo
+
+        
             <MenuContainer>
                 <TextField
                     id="standard-basic"
                     label="Qual carro você procura?"
+                    value={this.props.nameFilter}  //filtro para o nome
+                    onChange={this.props.onChangeNameFilter}
                 />
                 <ValorMinimo
 
                     id="standard-basic"
                     label="Valor Mínimo"
                     type="number"
+                    value={this.props.minFilter} //filtro para o valor minimo
+                    onChange={this.props.onChangeMinFilter}
                 />
                 <TextField
                     id="standard-basic"
                     label="Valor Máximo"
                     type="number"
+                    value={this.props.maxFilter} //filtro para o valor maximo
+                    onChange={this.props.onChangeMaxFilter}
                 />
                 <SelectFiltro
                 select
