@@ -100,7 +100,7 @@ export class Menu extends React.Component {
           label="Valor Máximo"
           type="number"
         />
-        <SelectFiltro onChange={this.onChangeSelect} select label="Ordenar por">
+        <SelectFiltro value={this.state.selectValor} onChange={this.onChangeSelect} select label="Ordenar por">
           {currencies.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
