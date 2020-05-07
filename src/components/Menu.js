@@ -14,6 +14,7 @@ const MenuContainer = styled.div`
     padding-left: 3vw;
     padding-right: 3vw;
     box-shadow: 10px 10px 10px grey;
+    background-color:white;
 `
 const ValorMinimo = styled(TextField)`
     width: 10vw;

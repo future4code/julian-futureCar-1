@@ -21,60 +21,79 @@ const HeaderContainer = styled.div`
 `
 const Imagem = styled.img`
   width: 200px;
-
 `
 const LinhaVertical = styled.div`
   float: left;
   height: 20px;
   border-left: 1px solid;
   box-sizing: border-box;
+  margin-left: 1vw;
   padding-left: 3vw;
-  padding-right: 3vw;
-
 `
 const Botao = styled.div`
    display: flex;
-   align-content: space-between;
+   justify-content: space-between;
+   width: 20vw;
 
 `
+const FaleConosco = styled.div`
+   display: flex;
+   justify-content: center;
+    align-items: center;
+`
+const LogoEBotoes = styled.div`
+  display:flex;
+  align-items:center;
+`
+
+const BotaoComprar = styled(ButComprar)`
+`
+
+const BotaoVender = styled(ButVender)`
+`
+
+const TextoFaleConosco = styled.div`
+`
+
+const NomeTelefone = styled.h3`
+  margin: 0;
+`
+
+const Telefone = styled.p`
+  margin: 0;
+`
+
 
 export class Header extends React.Component {
-    render() {
-      return (
-        
-
-    <HeaderContainer>
-      <Imagem src={Logo}  alt="Logo"/> 
-         <MenuIcon size="large"/>
-            <LinhaVertical/>
-                  
-      <Botao>   
-
-        <ButComprar variant="outlined" color="default"> <PersonIcon/>
-            Comprar
-        </ButComprar>
-
-        <ButVender variant="outlined" color="default" > <PersonIcon/>
-            Vender
-        </ButVender>
-        
-      </Botao> 
-       
-        <HeadsetIcon size="large"/> 
-
-        <div>
-          <h3>Fale Conosco</h3>
-           <p>0800 000 0000</p> 
-        </div>
-      
-
-      
-    </HeaderContainer>
-
-        
-
-         
-      
-      )
-    }
+  render() {
+    return (
+      <HeaderContainer>
+        <LogoEBotoes>
+          <Imagem src={Logo} alt="Logo" />
+          <MenuIcon size="large" />
+          <LinhaVertical />
+          <Botao>
+            <BotaoComprar variant="outlined" color="default">
+              <PersonIcon />
+              Comprar
+            </BotaoComprar>
+            <BotaoVender
+              onClick={this.props.onClickVender}
+              variant="outlined"
+              color="default" >
+              <PersonIcon />
+              Vender
+            </BotaoVender>
+          </Botao>
+        </LogoEBotoes>
+        <FaleConosco>
+          <HeadsetIcon style={{ fontSize: 50 }} />
+          <TextoFaleConosco>
+            <NomeTelefone>Fale Conosco</NomeTelefone>
+            <Telefone>0800 000 0000</Telefone>
+          </TextoFaleConosco>
+        </FaleConosco>
+      </HeaderContainer>
+    )
   }
+}
