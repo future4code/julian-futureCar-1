@@ -9,7 +9,7 @@ import ButVender from '@material-ui/core/Button';
 import PersonIcon from '@material-ui/icons/Person';
 
 const HeaderContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 20vh;
   background-color: #fad140;
   display: flex;
