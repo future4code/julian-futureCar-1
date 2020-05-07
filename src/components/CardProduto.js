@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
-import "./CardContainer.css";
-import CardProduto from "./CardProduto";
 
 const DivContainer = styled.div`
   display: flex;
@@ -71,50 +69,27 @@ const BotaoQuero = styled.button`
   background-color: transparent;
 `;
 
-export class CardContainer extends React.Component {
-  state = {
-    minFilter: 1000,
-    maxFilter: 1500,
-    nameFilter: "",
-    carros: [],
-  };
-
-  componentDidMount() {
-    this.carregaLista(); // monta  a lista
-  }
-  // carrega a lista dos carros
-  carregaLista = () => {
-    axios
-      .get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/futureCarOne/cars"
-      )
-      .then((result) => {
-        this.setState({ carros: result.data.cars });
-      })
-      .catch((error) => {
-        console.log("erro:", error);
-      });
-  };
-  //fim do comando
-
-  onChangeMinFilter = (event) => {
-    this.setState({ minFilter: event.target.value });
-  };
-
-  onChangeMaxFilter = (event) => {
-    this.setState({ maxFilter: event.target.value });
-  };
-
-  onChangeNameFilter = (event) => {
-    this.setState({ nameFilter: event.target.value });
-  };
-
+export class CardProduto extends React.Component {
   render() {
-    console.log(this.state.carros)
-    return (
-      <DivContainer>
-        <CardProduto listaCarros={this.state.carros} />
-      </DivContainer>
-    );
+    const imprimeCarros = this.props.listaCarros.map((carro) => {
+      console.log(carro);
+      return (
+        <Container className="hoverBorderVermelho">
+          <Foto src={carro.paymentMethod}></Foto>
+          <ContainerDetalhes>
+            <Titulo>{carro.name}</Titulo>
+            <Descricao>{carro.description}</Descricao>
+            <Valor>R${carro.price}</Valor>
+            <FormaDePagamento>Forma de pagamento: Cartão</FormaDePagamento>
+            <PrazoEntrega>Prazo de entraga: {carro.shipping}</PrazoEntrega>
+          </ContainerDetalhes>
+          <BotaoQuero>QUERO ESTE CARRO</BotaoQuero>
+        </Container>
+      );
+    });
+    console.log(imprimeCarros);
+    return <DivContainer>{imprimeCarros}</DivContainer>;
   }
 }
+
+export default CardProduto;
