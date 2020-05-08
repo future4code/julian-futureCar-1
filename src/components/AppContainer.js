@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './AppContainer.css'
 import styled from 'styled-components';
+import axios from 'axios'
 import Banner from '../imagem/banner-compro-carro.svg';
 import Poligono from '../imagem/poligono.png'
 import { Menu } from './Menu'
-import { CardContainer } from './CardContainer'
 import { Header } from './Header'
 import { Cadastro } from './Cadastro'
 import Footer from './Footer'
+import CardProduto from './CardProduto';
 
 
 
@@ -58,8 +59,36 @@ const Titulo = styled.img`
 export class AppContainer extends React.Component {
 
   state = {
-    trocaPagina: false
+    trocaPagina: false,
+    carros:[],
+    inputTexto: "",
+    inputValorMin: "",
+    inputValorMax: "",
+    selectValor: "vendaA",
   }
+
+
+  componentDidMount() {
+    this.carregaLista(); // monta  a lista
+  }
+
+
+  // carrega a lista dos carros
+  carregaLista = () => {
+    axios
+      .get(
+        "https://us-central1-labenu-apis.cloudfunctions.net/futureCarOne/cars"
+      )
+      .then((result) => {
+        this.setState({ carros: result.data.cars });
+        
+      })
+      .catch((error) => {
+        console.log("erro:", error);
+      });
+  };
+  //fim do comando
+
 
     onClickTrocaPagina = () => {
       this.setState({
@@ -67,6 +96,34 @@ export class AppContainer extends React.Component {
       })
     }
 
+    onChangeTexto = (event) => {
+      this.setState({
+        inputTexto: event.target.value,
+      });
+      console.log(this.state.inputTexto);
+    };
+  
+    onChangeMin = (event) => {
+      this.setState({
+        inputValorMin: event.target.value,
+      });
+      console.log(this.state.inputValorMin);
+    };
+  
+    onChangeMax = (event) => {
+      this.setState({
+        inputValorMax: event.target.value,
+      });
+      console.log(this.state.inputValorMax);
+    };
+  
+    onChangeSelect = (event) => {
+      this.setState({
+        selectValor: event.target.value,
+      });
+      console.log(this.state.selectValor);
+    };
+  
 
   render() {
 
@@ -81,12 +138,24 @@ export class AppContainer extends React.Component {
                 <Header onClickVender={this.onClickTrocaPagina} />
                 <BannerImg src={Banner} />
                 <MenuContainer>
-                  <Menu />
+                  <Menu
+                  onChangeTex={this.onChangeTexto}
+                  onChangeMi={this.onChangeMin}
+                  onChangeMa={this.onChangeMax}
+                  onChangeSe={this.onChangeSelect}
+                  valueSe={this.state.selectValor}
+                  />
                 </MenuContainer>
                 <Main>
                   <Titulo src={Poligono} />
                   <SectionProdutos>
-                    <CardContainer />
+                    <CardProduto 
+                    listaCarros = {this.state.carros} 
+                    inputValorMinimo = {this.state.inputValorMin}
+                    inputValorMaximo = {this.state.inputValorMax}
+                    inputBuscar = {this.state.inputTexto}
+                    selectVal = {this.state.selectValor}
+                    />
                   </SectionProdutos>
                 </Main>
                 <Footer />
