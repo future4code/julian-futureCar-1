@@ -74,14 +74,9 @@ export class AppContainer extends React.Component {
 
     return (
       <div>
-
-        {
-          this.state.trocaPagina ? (
-
+        {this.state.trocaPagina ? (
             <Cadastro></Cadastro>
-
           ) : (
-
               <Container>
                 <Header onClickVender={this.onClickTrocaPagina} />
                 <BannerImg src={Banner} />
@@ -96,21 +91,8 @@ export class AppContainer extends React.Component {
                 </Main>
                 <Footer />
               </Container>
-
-            )
-        }
-
-
-
-
-
-
-
+            )}
       </div>
-
-
-
-
     )
   }
 }

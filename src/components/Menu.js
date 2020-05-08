@@ -1,89 +1,115 @@
-import React from 'react'
-import styled from 'styled-components'
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import styled from "styled-components";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const MenuContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 3vw;
-    width: 95vw;
-    height:10vw;
-    margin:0;
-    padding-left: 3vw;
-    padding-right: 3vw;
-    box-shadow: 10px 10px 10px grey;
-    background-color:white;
-`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3vw;
+  width: 95vw;
+  height: 10vw;
+  margin: 0;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  box-shadow: 10px 10px 10px grey;
+  background-color: white;
+`;
 const ValorMinimo = styled(TextField)`
-    width: 10vw;
-`
+  width: 10vw;
+`;
 const SelectFiltro = styled(TextField)`
-    width: 10vw;
-`
+  width: 20vw;
+`;
 
 const BotaoBuscar = styled(Button)`
-    background-color: rgb(226, 42, 36);
-`
+  background-color: rgb(226, 42, 36);
+`;
 
 const currencies = [
-    {
-      value: 'titulo',
-      label: 'Título',
-    },
-    {
-      value: 'venda',
-      label: 'Valor da venda',
-    },
-    {
-      value: 'entrega',
-      label: 'Prazo de Entrega',
-    }
-  ];
+  {
+    value: "titulo",
+    label: "Título",
+  },
+  {
+    value: "venda",
+    label: "Valor da venda",
+  },
+  {
+    value: "entrega",
+    label: "Prazo de Entrega",
+  },
+];
 
 export class Menu extends React.Component {
-    render() {
-        return (
+  state = {
+    inputTextoValor: "",
+    inputValorMinValor: "",
+    inputValorMaxValor: "",
+    selectValor: "",
+  };
 
-          //Adicionado as props dos filtros de nome, valor maximo e valor minimo
+  onChangeTexto = (event) => {
+    this.setState({
+      inputTextoValor: event.target.value,
+    });
+    console.log(this.state.inputTextoValor);
+  };
 
-        
-            <MenuContainer>
-                <TextField
-                    id="standard-basic"
-                    label="Qual carro você procura?"
-                    value={this.props.nameFilter}  //filtro para o nome
-                    onChange={this.props.onChangeNameFilter}
-                />
-                <ValorMinimo
+  onChangeMin = (event) => {
+    this.setState({
+      inputValorMinValor: event.target.value,
+    });
+    console.log(this.state.inputValorMinValor);
+  };
 
-                    id="standard-basic"
-                    label="Valor Mínimo"
-                    type="number"
-                    value={this.props.minFilter} //filtro para o valor minimo
-                    onChange={this.props.onChangeMinFilter}
-                />
-                <TextField
-                    id="standard-basic"
-                    label="Valor Máximo"
-                    type="number"
-                    value={this.props.maxFilter} //filtro para o valor maximo
-                    onChange={this.props.onChangeMaxFilter}
-                />
-                <SelectFiltro
-                select
-                label="Ordenar por"
-                >
-                    {currencies.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                  </SelectFiltro>
+  onChangeMax = (event) => {
+    this.setState({
+      inputValorMaxValor: event.target.value,
+    });
+    console.log(this.state.inputValorMaxValor);
+  };
 
-                <BotaoBuscar>Buscar</BotaoBuscar>
-            </MenuContainer>
-        )
-    }
+  onChangeSelect = (event) => {
+    this.setState({
+      selectValor: event.target.value,
+    });
+    console.log(this.state.selectValor);
+  };
+
+  onClickBuscar = () => {};
+
+  render() {
+    return (
+      <MenuContainer>
+        <TextField
+          onChange={this.onChangeTexto}
+          id="standard-basic"
+          label="Qual carro você procura?"
+        />
+        <ValorMinimo
+          onChange={this.onChangeMin}
+          id="standard-basic"
+          label="Valor Mínimo"
+          type="number"
+        />
+        <TextField
+          onChange={this.onChangeMax}
+          id="standard-basic"
+          label="Valor Máximo"
+          type="number"
+        />
+        <SelectFiltro value={this.state.selectValor} onChange={this.onChangeSelect} select label="Ordenar por">
+          {currencies.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </SelectFiltro>
+
+        <BotaoBuscar onClick={this.onClickBuscar}>Buscar</BotaoBuscar>
+      </MenuContainer>
+    );
+  }
 }
