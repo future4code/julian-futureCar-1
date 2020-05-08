@@ -80,24 +80,75 @@ const BotaoQuero = styled(Button)`
 
 export class CardProduto extends React.Component {
   render() {
-    const imprimeCarros = this.props.listaCarros.map((carro) => {
-      console.log(carro);
-      return (
-        <ContainerCard className="hoverBorderVermelho">
-          <Foto src={carro.paymentMethod}></Foto>
-          <ContainerDetalhes>
-            <Titulo>{carro.name}</Titulo>
-            <Descricao>{carro.description}</Descricao>
-            <Valor>R${carro.price}</Valor>
-            <FormaDePagamento>Forma de pagamento: Cartão</FormaDePagamento>
-            <PrazoEntrega>Prazo de entraga: {carro.shipping}</PrazoEntrega>
-          </ContainerDetalhes>
-          <BotaoQuero>QUERO ESTE CARRO</BotaoQuero>
-        </ContainerCard>
-      );
-    });
-    console.log(imprimeCarros);
-    return <Container>{imprimeCarros}</Container>;
+    const listaProdutos = this.props.listaCarros
+
+    const listaFiltradaMin = listaProdutos.filter(prod => {
+      if (this.props.inputValorMinimo !== '') {
+        return prod.price >= this.props.inputValorMinimo
+      } else {
+        return true
+      }
+    })
+
+    const listaFiltradaMax = listaProdutos.filter(prod => {
+      if (this.props.inputValorMaximo !== '') {
+        return prod.price <= this.props.inputValorMaximo
+      } else {
+        return true
+      }
+    })
+
+    let listaFiltradaPreco = listaFiltradaMax.filter(x => listaFiltradaMin.includes(x));
+
+    const listaBusca = listaProdutos.filter(prod => {
+      if (this.props.inputBuscar !== '') {
+        return prod.name === this.props.inputBuscar
+      } else {
+        return true
+      }
+    })
+
+    let listaFiltrada = listaBusca.filter(x => listaFiltradaPreco.includes(x));
+    let listaOrdenada = listaFiltrada
+    const ASC = 'ascending';
+
+    function sortByText(a, b, order = ASC) {
+      const diff = a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+      if (order === ASC) {
+          return diff;
+      }
+      return -1 * diff;
+  }
+
+    if (this.props.selectVal == 'vendaA') {
+      listaOrdenada = listaOrdenada.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+    } else if (this.props.selectVal == 'vendaB') {
+      listaOrdenada = listaOrdenada.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+    } else if (this.props.selectVal == 'titulo') {
+      listaOrdenada = listaOrdenada.sort((a, b) => sortByText(a, b, ASC));
+    } else if (this.props.selectVal == 'entrega') {
+      listaOrdenada = listaOrdenada.sort((a, b) => parseFloat(a.shipping) - parseFloat(b.shipping));
+    }
+
+    return (
+      <Container>
+        {listaOrdenada.map((carro) => {
+          return (
+            <ContainerCard>
+              <Foto src={carro.paymentMethod}></Foto>
+              <ContainerDetalhes>
+                <Titulo>{carro.name}</Titulo>
+                <Descricao>{carro.description}</Descricao>
+                <Valor>R${carro.price}</Valor>
+                <FormaDePagamento>Forma de pagamento: Cartão</FormaDePagamento>
+                <PrazoEntrega>Prazo de entraga: {carro.shipping}</PrazoEntrega>
+              </ContainerDetalhes>
+              <BotaoQuero>QUERO ESTE CARRO</BotaoQuero>
+            </ContainerCard>
+          );
+        })}
+      </Container>
+    )
   }
 }
 

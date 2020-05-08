@@ -33,8 +33,12 @@ const currencies = [
     label: "Título",
   },
   {
-    value: "venda",
-    label: "Valor da venda",
+    value: "vendaA",
+    label: "Preço Crescente",
+  },
+  {
+    value: "vendaB",
+    label: "Preço Decrescente",
   },
   {
     value: "entrega",
@@ -44,63 +48,29 @@ const currencies = [
 
 export class Menu extends React.Component {
   state = {
-    inputTextoValor: "",
-    inputValorMinValor: "",
-    inputValorMaxValor: "",
-    selectValor: "",
   };
 
-  onChangeTexto = (event) => {
-    this.setState({
-      inputTextoValor: event.target.value,
-    });
-    console.log(this.state.inputTextoValor);
-  };
-
-  onChangeMin = (event) => {
-    this.setState({
-      inputValorMinValor: event.target.value,
-    });
-    console.log(this.state.inputValorMinValor);
-  };
-
-  onChangeMax = (event) => {
-    this.setState({
-      inputValorMaxValor: event.target.value,
-    });
-    console.log(this.state.inputValorMaxValor);
-  };
-
-  onChangeSelect = (event) => {
-    this.setState({
-      selectValor: event.target.value,
-    });
-    console.log(this.state.selectValor);
-  };
-
+  
   onClickBuscar = () => {};
 
   render() {
     return (
       <MenuContainer>
         <TextField
-          onChange={this.onChangeTexto}
-          id="standard-basic"
+          onChange={this.props.onChangeTex}
           label="Qual carro você procura?"
         />
         <ValorMinimo
-          onChange={this.onChangeMin}
-          id="standard-basic"
+          onChange={this.props.onChangeMi}
           label="Valor Mínimo"
           type="number"
         />
         <TextField
-          onChange={this.onChangeMax}
-          id="standard-basic"
+          onChange={this.props.onChangeMa}
           label="Valor Máximo"
           type="number"
         />
-        <SelectFiltro value={this.state.selectValor} onChange={this.onChangeSelect} select label="Ordenar por">
+        <SelectFiltro value={this.props.valueSe} onChange={this.props.onChangeSe} select label="Ordenar por">
           {currencies.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
