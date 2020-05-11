@@ -23,9 +23,9 @@ const SelectFiltro = styled(TextField)`
   width: 20vw;
 `;
 
-const BotaoBuscar = styled(Button)`
-  background-color: rgb(226, 42, 36);
-`;
+// const BotaoBuscar = styled(Button)`
+//   background-color: rgb(226, 42, 36);
+// `;
 
 const currencies = [
   {
@@ -50,7 +50,7 @@ export class Menu extends React.Component {
   state = {
   };
 
-  
+
   onClickBuscar = () => {};
 
   render() {
@@ -78,7 +78,7 @@ export class Menu extends React.Component {
           ))}
         </SelectFiltro>
 
-        <BotaoBuscar onClick={this.onClickBuscar}>Buscar</BotaoBuscar>
+        {/* <BotaoBuscar onClick={this.onClickBuscar}>Buscar</BotaoBuscar> */}
       </MenuContainer>
     );
   }
